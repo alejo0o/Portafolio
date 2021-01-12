@@ -55,44 +55,17 @@ export const Img = styled.img`
   width: 100%;
 `;
 
-export const ImageTitle = styled.div`
-  font-size: 2em;
-  font-weight: bold;
-`;
-
 export const ImageDescription = styled.p`
   font-size: 1.4em;
   margin-top: 0.25em;
-`;
-
-export const CustomHR = styled.hr`
-  border: 0;
-  height: 2px;
-  background-image: -webkit-linear-gradient(left, #f0f0f0, #31bcd8, #f0f0f0);
-  background-image: -moz-linear-gradient(left, #f0f0f0, #31bcd8, #f0f0f0);
-  background-image: -ms-linear-gradient(left, #f0f0f0, #31bcd8, #f0f0f0);
-  background-image: -o-linear-gradient(left, #f0f0f0, #31bcd8, #f0f0f0);
+  @media screen and (max-width: 768px) {
+    font-size: 1em;
+  }
 `;
 //Icon search
 export const SearchIcon = styled.i`
-  font-size: 4em;
-`;
-//Styles for grid
-export const GridContainer = styled.div`
-  padding: 2em 5%;
-  display: grid;
-
-  grid-template: repeat(${(props) => props.rowsNumber}, minmax(200px, 300px)) / repeat(
-      3,
-      minmax(300px, 415px)
-    );
-  justify-content: space-between;
-  gap: 29px;
+  font-size: 8em;
   @media screen and (max-width: 768px) {
-    grid-template: repeat(1, minmax(200px, 300px)) / repeat(
-        1,
-        minmax(300px, 400px)
-      );
-    justify-content: center;
+    font-size: 4em;
   }
 `;

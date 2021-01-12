@@ -1,3 +1,4 @@
+/* eslint-disable import/prefer-default-export */
 /* eslint-disable import/no-extraneous-dependencies */
 import styled from 'styled-components';
 
@@ -15,8 +16,5 @@ export const GridContainer = styled.div`
         3,
         minmax(80px, 110px)
       );
-    justify-content: center;
-    gap 20px;
   }
 `;
-export const Img = styled.div``;

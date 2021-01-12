@@ -2,7 +2,7 @@
 import React from 'react';
 import { Container, Modal } from 'react-bootstrap';
 import { Img, Title, Icons } from './ProjectStyle';
-import { CustomHR } from '../Cards/CardEffect';
+import { CustomHR } from '../../containers/CommonStyles';
 //SVGs
 import Github from '../../assets/img/modaldescription/github.svg';
 import Link from '../../assets/img/modaldescription/link.svg';

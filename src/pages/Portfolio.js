@@ -1,8 +1,10 @@
+/* eslint-disable react/jsx-closing-bracket-location */
 /* eslint-disable import/no-extraneous-dependencies */
 import React from 'react';
 import { Container } from 'react-bootstrap';
 import CardHover from '../components/Cards/CardHover';
-import { CustomHR, GridContainer } from '../components/Cards/CardEffect';
+import { GridContainer, CustomHR } from '../containers/CommonStyles';
+import Experience from '../components/Experience/Experience';
 
 const Portfolio = () => {
   return (
@@ -11,7 +13,24 @@ const Portfolio = () => {
         <h3>PORTFOLIO</h3>
       </div>
       <CustomHR />
-      <GridContainer rowsNumber='2'>
+      <GridContainer
+        rowsNumber='2'
+        rowminwidth='200px'
+        rowmaxwidth='300px'
+        columnsNumber='3'
+        columnmaxheight='415px'
+        columnminheight='300px'
+        gap='29px'
+        responsiverowsNumber='1'
+        responsirowminwidth='auto'
+        responsiverowmaxwidth='auto'
+        resposivecolumnnumber='1'
+        responsivecolumnminheight='auto'
+        responsivecolumnmaxheight='800px'
+        responsivegap='50px'
+        responsiveWindowSize='1024px'
+        justifyContent='center'
+        style={{ marginBottom: '3em', padding: '2em 5%' }}>
         <CardHover
           imageTitle='Digevo Demos'
           description="Front-end for Digevo's demos related to facial recognition, it was developed using HTML5 CSS3 Bootstrap Reactjs and JavaScript."
@@ -53,6 +72,8 @@ const Portfolio = () => {
           webpage='https://noticias-utpl3.webnode.es'
         />
       </GridContainer>
+
+      <Experience />
     </Container>
   );
 };

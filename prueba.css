@@ -18,3 +18,48 @@
   font-weight: bolder;
   grid-template-columns: auto;
 }
+
+.box {
+  position: relative;
+  width: 300px;
+  height: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #060c21;
+}
+
+.box:before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: #fff;
+  z-index: -1;
+}
+.box:after {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: #fff;
+  z-index: -2;
+  filter: blur(40px);
+}
+.box:before,
+.box:after {
+  background: linear-gradient(235deg, #89ff00, #060c21, #00bcd4);
+  text-align: justify;
+  padding: 3%;
+  border-radius: 1em;
+  background: #1c6cae;
+  color: white;
+  align-items: center;
+  -webkit-box-reflect: unset;
+  gap: unset;
+  height: 100%;
+}

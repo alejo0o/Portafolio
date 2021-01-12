@@ -13,7 +13,7 @@ import {
   PageHeader,
 } from './AnimationStyle';
 import computer from '../../assets/img/header/computer.png';
-import { CustomHR } from '../Cards/CardEffect';
+import { CustomHR } from '../../containers/CommonStyles';
 //SVG images
 import php from '../../assets/img/header/php.svg';
 import javascript from '../../assets/img/header/javascript.svg';

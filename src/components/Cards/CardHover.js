@@ -9,7 +9,6 @@ import {
   Img,
   ImageDescription,
   SearchIcon,
-  ImageTitle,
 } from './CardEffect';
 import DescriptionModal from '../ModalDescription/ProjectDescription';
 //Effects from react-spring
@@ -56,9 +55,7 @@ const CardHover = ({
           style={{ display: 'block', width: '100%', height: '100%' }}
         />
         <ImageOverlay>
-          <ImageTitle>
-            <SearchIcon className='fa fa-search-plus' aria-hidden='true' />
-          </ImageTitle>
+          <SearchIcon className='fa fa-search-plus' aria-hidden='true' />
           <br />
           <ImageDescription>{imageTitle}</ImageDescription>
         </ImageOverlay>

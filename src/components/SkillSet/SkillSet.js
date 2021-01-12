@@ -2,9 +2,8 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import React from 'react';
 import { Container, OverlayTrigger, Tooltip } from 'react-bootstrap';
-import { GridContainer } from './SkillSetStyle';
-import { CustomHR } from '../Cards/CardEffect';
 import importNames from './SkillNames';
+import { GridContainer, CustomHR } from '../../containers/CommonStyles';
 
 const SkillSet = () => {
   return (
@@ -19,7 +18,24 @@ const SkillSet = () => {
         <h3>SKILLSET</h3>
       </div>
       <CustomHR />
-      <GridContainer>
+      <GridContainer
+        style={{ padding: '2em 5%' }}
+        rowsNumber='4'
+        rowminwidth='120px'
+        rowmaxwidth='140px'
+        columnsNumber='4'
+        columnmaxheight='140px'
+        columnminheight='120px'
+        gap='29px'
+        responsiverowsNumber='3'
+        responsirowminwidth='80px'
+        responsiverowmaxwidth='120px'
+        resposivecolumnnumber='3'
+        responsivecolumnminheight='80px'
+        responsivecolumnmaxheight='120px'
+        responsivegap='29px'
+        responsiveWindowSize='728px'
+        justifyContent='space-between'>
         {importNames.map((skills) => (
           <OverlayTrigger
             placement='top'
