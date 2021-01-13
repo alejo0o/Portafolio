@@ -8,7 +8,7 @@ import Experience from '../components/Experience/Experience';
 
 const Portfolio = () => {
   return (
-    <Container fluid style={{ padding: '2em 0' }}>
+    <Container fluid style={{ padding: '2em 0' }} className='mb-5'>
       <div style={{ textAlign: 'center' }}>
         <h3>PORTFOLIO</h3>
       </div>
@@ -72,7 +72,6 @@ const Portfolio = () => {
           webpage='https://noticias-utpl3.webnode.es'
         />
       </GridContainer>
-
       <Experience />
     </Container>
   );
