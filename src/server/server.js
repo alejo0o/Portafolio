@@ -15,6 +15,7 @@ import getManifest from './getManifest';
 
 const app = express();
 const ENV = 'production';
+const PORT = process.env.PORT || 3000;
 
 if (ENV === 'development') {
   console.log('development config');
@@ -83,4 +84,4 @@ const renderApp = (req, res) => {
 
 app.get('*', renderApp);
 
-app.listen(process.env.PORT);
+app.listen(PORT);
