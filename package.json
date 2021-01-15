@@ -4,12 +4,14 @@
   "description": "Portafolio actualizado",
   "main": "index.js",
   "scripts": {
+    "start": "npm-run-all build:ssr run:app",
     "prod": "webpack --config ./copy-webpack.config.js --mode production",
     "dev": "webpack serve --config ./webpack.dev.config.js",
     "dll": "webpack --config ./webpack.dll.config.js --mode production",
-    "build": "npm-run-all dll prod",
+    "build:prod": "npm-run-all dll prod",
     "start:dev": "nodemon src/server/index",
-    "build:ssr": "webpack-cli --config webpack.config.js"
+    "build:ssr": "webpack-cli --config webpack.config.js",
+    "run:app": "node src/server/index.js"
   },
   "repository": {
     "type": "git",
