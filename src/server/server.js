@@ -16,7 +16,8 @@ import getManifest from './getManifest';
 
 dotenv.config();
 const app = express();
-const { ENV, PORT } = process.env;
+const ENV = 'production';
+const port = process.env.PORT || 3000;
 
 if (ENV === 'development') {
   console.log('development config');
@@ -85,7 +86,7 @@ const renderApp = (req, res) => {
 
 app.get('*', renderApp);
 
-app.listen(PORT, (err) => {
+app.listen(port, (err) => {
   if (err) console.log(err);
-  else console.log(`server running on port ${PORT}`);
+  else console.log(`server running on port ${port}`);
 });
