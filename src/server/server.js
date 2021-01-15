@@ -84,4 +84,4 @@ const renderApp = (req, res) => {
 
 app.get('*', renderApp);
 
-app.listen(PORT);
+app.listen(PORT, () => console.log(`Listening on ${PORT}`));
