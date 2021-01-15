@@ -1,6 +1,6 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 import styled from 'styled-components';
-//#1c6cae
+
 export const MainDescriptionContainer = styled.div`
   display: flex;
   margin: 5% auto;

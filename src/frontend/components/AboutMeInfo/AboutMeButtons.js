@@ -3,7 +3,6 @@
 import React from 'react';
 import { Container } from 'react-bootstrap';
 import { NeonButton, ButtonContainer, InfoContainer } from './AboutMeInfoStyle';
-import CV from '../../assets/CV/CV Alejandro Vivanco.pdf';
 
 const AboutMeButtons = () => {
   return (
@@ -13,7 +12,7 @@ const AboutMeButtons = () => {
           rel='noreferrer'
           target='_blank'
           download='Alejandro Vivanco CV.pdf'
-          href={CV}
+          href='https://dl.dropboxusercontent.com/s/grz36trffqe62s4/CV%20Alejandro%20Vivanco.pdf'
           style={{ textDecoration: 'none' }}>
           <span />
           <span />

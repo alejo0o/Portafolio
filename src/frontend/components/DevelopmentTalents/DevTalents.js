@@ -1,10 +1,12 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import React from 'react';
+import { Container } from 'react-bootstrap';
 import Talent from './Talent';
 import { DevelopTMain, VerticalLine } from './DevTalentsStyle';
 
 const DevelopmentTalents = () => {
   return (
-    <>
+    <Container fluid>
       <DevelopTMain>
         <Talent
           image='https://i.ibb.co/L5yLcjq/3499793-browser-window-cloning-site-website-107633.png'
@@ -30,7 +32,7 @@ const DevelopmentTalents = () => {
           languages='React-Native, Expo, JavaScript, GQL'
         />
       </DevelopTMain>
-    </>
+    </Container>
   );
 };
 

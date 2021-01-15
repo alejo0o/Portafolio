@@ -1,24 +1,40 @@
+/* eslint-disable implicit-arrow-linebreak */
+/* eslint-disable operator-linebreak */
+/* eslint-disable indent */
+/* eslint-disable comma-dangle */
 const path = require('path');
-const HtmlWebPackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const TerserJSPlugin = require('terser-webpack-plugin');
-const OptimizeCssAssetPlugin = require('optimize-css-assets-webpack-plugin');
+//const OptimizeCssAssetPlugin = require('optimize-css-assets-webpack-plugin');
 const webpack = require('webpack');
-const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin');
+const CompressionWebpackPlugin = require('compression-webpack-plugin');
+const { WebpackManifestPlugin } = require('webpack-manifest-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+
+require('dotenv').config();
+
+const isDev = process.env.ENV === 'development';
+const entry = ['./src/frontend/index.js'];
+
+if (isDev) {
+  entry.push(
+    'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=100&reload=true'
+  );
+}
 
 module.exports = {
-  entry: path.resolve(__dirname, './src/index.js'),
+  entry,
+  mode: process.env.ENV,
   output: {
-    path: path.resolve(__dirname, 'dist'),
-    filename: 'js/[name].[fullhash].js',
+    path: path.resolve(__dirname, 'src/server/public'),
+    filename: isDev ? 'js/app.js' : 'js/app.[hash].js',
     publicPath: process.env.PUBLICPATH || '/',
     chunkFilename: 'js/[id].[chunkhash].js',
   },
   module: {
     rules: [
       {
-        test: /\.js$/,
+        test: /\.(js|jsx)$/,
         use: 'babel-loader',
         exclude: /node-modules/,
       },
@@ -33,40 +49,50 @@ module.exports = {
         ],
       },
       {
-        test: /\.jpg|png|gif|woff|eot|ttf|svg|mp4|webm|pdf$/,
+        test: /\.(jpg|png|gif|woff|eot|ttf|svg|mp4|webm|pdf|ico|woff2)$/,
         use: {
           loader: 'url-loader',
           options: {
             limit: 10000,
             fallback: 'file-loader',
             name: '[name].[ext]',
-            outputPath: 'assets',
+            outputPath: 'assets/',
           },
         },
       },
     ],
   },
   plugins: [
+    isDev ? new webpack.HotModuleReplacementPlugin() : () => {},
+    isDev
+      ? () => {}
+      : new CompressionWebpackPlugin({
+          test: /\.(js|css)$/,
+          filename: '[path].gz',
+        }),
+    isDev ? () => {} : new WebpackManifestPlugin(),
     new MiniCssExtractPlugin({
-      filename: 'css/[name].[fullhash].css',
-      chunkFilename: 'css/[id].[fullhash].css',
+      filename: isDev ? 'css/app.css' : 'css/app-[hash].css',
+      chunkFilename: 'css/[id]-[hash].css',
     }),
-    new HtmlWebPackPlugin({
-      template: path.resolve(__dirname, './public/index.html'),
-      filename: './index.html',
-    }),
-    new webpack.DllReferencePlugin({
-      // eslint-disable-next-line global-require
-      manifest: require('./modules-manifest.json'),
-    }),
-    new AddAssetHtmlPlugin({
-      filepath: path.resolve(__dirname, 'dist/js/*.dll.js'),
-      outputPath: 'js',
-      publicPath: process.env.PUBLICPATH || 'js',
-    }),
-    new CleanWebpackPlugin({}),
+    isDev ? () => {} : new CleanWebpackPlugin({}),
   ],
   optimization: {
-    minimizer: [new TerserJSPlugin(), new OptimizeCssAssetPlugin()],
+    minimize: true,
+    minimizer: [new TerserJSPlugin()],
+    splitChunks: {
+      chunks: 'async',
+      cacheGroups: {
+        vendors: {
+          name: 'vendor',
+          chunks: 'all',
+          reuseExistingChunk: true,
+          priority: 1,
+          filename: isDev ? 'vendor/vendor.js' : 'vendor/vendor-[fullhash].js',
+          enforce: true,
+          test: /[\\/]node_modules[\\/](react|react-dom)[\\/]/,
+        },
+      },
+    },
   },
 };
