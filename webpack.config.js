@@ -27,7 +27,7 @@ module.exports = {
   mode: process.env.ENV,
   output: {
     path: path.resolve(__dirname, 'src/server/public'),
-    filename: isDev ? 'js/app.js' : 'js/app.[hash].js',
+    filename: isDev ? 'js/app.js' : 'js/app.[fullhash].js',
     publicPath: process.env.PUBLICPATH || '/',
     chunkFilename: 'js/[id].[chunkhash].js',
   },
@@ -72,8 +72,8 @@ module.exports = {
         }),
     isDev ? () => {} : new WebpackManifestPlugin(),
     new MiniCssExtractPlugin({
-      filename: isDev ? 'css/app.css' : 'css/app-[hash].css',
-      chunkFilename: 'css/[id]-[hash].css',
+      filename: isDev ? 'css/app.css' : 'css/app-[fullhash].css',
+      chunkFilename: 'css/[id]-[chunkhash].css',
     }),
     isDev ? () => {} : new CleanWebpackPlugin({}),
   ],

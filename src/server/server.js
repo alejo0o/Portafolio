@@ -2,7 +2,6 @@
 /* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable global-require */
 import express from 'express';
-import dotenv from 'dotenv';
 import webpack from 'webpack';
 //React Imports
 import React from 'react';
@@ -14,10 +13,8 @@ import { renderRoutes } from 'react-router-config';
 import serverRoutes from '../frontend/components/serverRoutes';
 import getManifest from './getManifest';
 
-dotenv.config();
 const app = express();
 const ENV = 'production';
-const port = process.env.PORT || 3000;
 
 if (ENV === 'development') {
   console.log('development config');
@@ -86,7 +83,4 @@ const renderApp = (req, res) => {
 
 app.get('*', renderApp);
 
-app.listen(port, (err) => {
-  if (err) console.log(err);
-  else console.log(`server running on port ${port}`);
-});
+app.listen(process.env.PORT);
