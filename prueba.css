@@ -62,4 +62,7 @@
   -webkit-box-reflect: unset;
   gap: unset;
   height: 100%;
+  align-items: center;
+  justify-content: center;
+  justify-items: center;
 }

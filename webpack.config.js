@@ -27,9 +27,9 @@ module.exports = {
   mode: process.env.ENV,
   output: {
     path: path.resolve(__dirname, 'src/server/public'),
-    filename: isDev ? 'js/app.js' : 'js/app.[fullhash].js',
+    filename: isDev ? 'js/app.js' : 'js/app-[fullhash].js',
     publicPath: process.env.PUBLICPATH || '/',
-    chunkFilename: 'js/[id].[chunkhash].js',
+    chunkFilename: 'js/[id]-[chunkhash].js',
   },
   module: {
     rules: [

@@ -5,6 +5,7 @@ import express from 'express';
 import webpack from 'webpack';
 //React Imports
 import React from 'react';
+import dotenv from 'dotenv';
 import { renderToString } from 'react-dom/server';
 import { ServerStyleSheet, StyleSheetManager } from 'styled-components';
 //import helmet from 'helmet';
@@ -13,8 +14,9 @@ import { renderRoutes } from 'react-router-config';
 import serverRoutes from '../frontend/components/serverRoutes';
 import getManifest from './getManifest';
 
+dotenv.config();
 const app = express();
-const ENV = 'production';
+const { ENV } = process.env;
 const PORT = process.env.PORT || 3000;
 
 if (ENV === 'development') {

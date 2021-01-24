@@ -11,7 +11,7 @@ const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin');
 module.exports = {
   entry: path.resolve(__dirname, './src/frontend/index.js'),
   output: {
-    path: path.resolve(__dirname, 'dist'),
+    path: path.resolve(__dirname, 'src/server/public'),
     filename: 'js/[name].[fullhash].js',
     publicPath: process.env.PUBLICPATH || '/',
     chunkFilename: 'js/[id].[chunkhash].js',
