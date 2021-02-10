@@ -18,6 +18,7 @@ module.exports = {
     hot: true,
     open: true,
   },
+
   module: {
     rules: [
       {

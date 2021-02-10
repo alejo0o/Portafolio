@@ -3,6 +3,7 @@
 /* eslint-disable global-require */
 import express from 'express';
 import webpack from 'webpack';
+import { Helmet } from 'react-helmet';
 //React Imports
 import React from 'react';
 import dotenv from 'dotenv';
@@ -16,7 +17,7 @@ import getManifest from './getManifest';
 
 dotenv.config();
 const app = express();
-const { ENV } = process.env;
+const { ENV } = process.env || 'production';
 const PORT = process.env.PORT || 3000;
 
 if (ENV === 'development') {
@@ -47,17 +48,18 @@ const setResponse = (html, manifest) => {
   const mainStyles = manifest ? manifest['main.css'] : 'css/app.css';
   const mainBuild = manifest ? manifest['main.js'] : 'js/app.js';
   const vendorBuild = manifest ? manifest['vendor.js'] : 'vendor/vendor.js';
-
+  const helmet = Helmet.renderStatic();
   return `
     <!DOCTYPE html>
-              <html lang="en">
+              <html ${helmet.htmlAttributes.toString()}>
                 <head>
                     <meta charset="UTF-8">
                     <meta name="viewport" content="width=device-width, initial-scale=1.0">
                     <link rel="stylesheet" href="${mainStyles}" type="text/css">
-                    <title>Portafolio 2021</title>
+                    ${helmet.title.toString()}
+                    ${helmet.link.toString()}
                 </head>
-                <body>
+                <body ${helmet.bodyAttributes.toString()}>
                     <div id="app">${html}</div>
                     <script src="${mainBuild}" type="text/javascript"></script>
                     <script src="${vendorBuild}" type="text/javascript"></script>

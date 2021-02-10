@@ -1,26 +1,26 @@
 /* eslint-disable react/jsx-closing-bracket-location */
 /* eslint-disable import/no-extraneous-dependencies */
 import React from 'react';
+
 import { Container } from 'react-bootstrap';
 import {
-  ImageContainer,
-  TextContainer,
   MainDescriptionContainer,
+  TextDescription,
+  TitleDescription,
+  DescriptionDecoration,
+  ImgDescription,
+  ImgContainer,
 } from './MainDescriptionStyle';
 
 const MainDescription = () => {
   return (
-    <Container fluid style={{ padding: '0 5%' }}>
+    <Container fluid>
       <MainDescriptionContainer>
-        <TextContainer>
-          <h2
-            style={{
-              textAlign: 'start',
-
-              fontWeight: '900',
-            }}>
+        <TextDescription>
+          <TitleDescription>
             Hi, I&apos;m Alejandro Vivanco
-          </h2>
+            <DescriptionDecoration />
+          </TitleDescription>
           <br />
           <p>
             I&apos;m a Junior developer with knowledge of applied technologies
@@ -34,8 +34,10 @@ const MainDescription = () => {
             <br />
           </p>
           <h2 style={{ fontFamily: 'Brush Script MT, cursive' }}>-Alejo</h2>
-        </TextContainer>
-        <ImageContainer />
+        </TextDescription>
+        <ImgContainer>
+          <ImgDescription />
+        </ImgContainer>
       </MainDescriptionContainer>
     </Container>
   );

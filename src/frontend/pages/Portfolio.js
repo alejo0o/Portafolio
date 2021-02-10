@@ -1,6 +1,7 @@
 /* eslint-disable react/jsx-closing-bracket-location */
 /* eslint-disable import/no-extraneous-dependencies */
 import React from 'react';
+import { Helmet } from 'react-helmet';
 import { Container } from 'react-bootstrap';
 import CardHover from '../components/Cards/CardHover';
 import { GridContainer, CustomHR } from '../containers/CommonStyles';
@@ -9,6 +10,10 @@ import Experience from '../components/Experience/Experience';
 const Portfolio = () => {
   return (
     <Container fluid style={{ padding: '2em 0' }} className='mb-5'>
+      <Helmet>
+        <title>Portfolio | Alejandro Vivanco</title>
+        <link rel='icon' href='https://i.ibb.co/g4hYLtW/image.png' />
+      </Helmet>
       <div style={{ textAlign: 'center' }}>
         <h3>PORTFOLIO</h3>
       </div>
